@@ -1,0 +1,28 @@
+<!-- SPEED SETTINGS MENU - Add this inside video-controls-overlay, after controls-main -->
+<!-- Place this right before the closing </div> of video-controls-overlay -->
+
+<div id="settings-menu" class="settings-menu">
+    <div id="speed-options">
+        <div class="settings-option" data-speed="0.25">0.25x</div>
+        <div class="settings-option" data-speed="0.5">0.5x</div>
+        <div class="settings-option" data-speed="0.75">0.75x</div>
+        <div class="settings-option active" data-speed="1">1x</div>
+        <div class="settings-option" data-speed="1.25">1.25x</div>
+        <div class="settings-option" data-speed="1.5">1.5x</div>
+        <div class="settings-option" data-speed="1.75">1.75x</div>
+        <div class="settings-option" data-speed="2">2x</div>
+    </div>
+</div>
+
+<!-- INSTRUCTIONS:
+1. Find the video-controls-overlay div in index.html (around line 303)
+2. Locate the closing </div> tag after controls-main (around line 332)
+3. Add the above HTML code right before that closing </div>
+4. The structure should be:
+   <div class="video-controls-overlay">
+       <div class="video-progress-container">...</div>
+       <div class="controls-main">...</div>
+       <!-- ADD SETTINGS MENU HERE -->
+<div id="settings-menu" class="settings-menu">...</div>
+</div>
+-->

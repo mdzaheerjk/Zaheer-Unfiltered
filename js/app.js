@@ -51,74 +51,102 @@ document.addEventListener('DOMContentLoaded', () => {
     if (verifyBtn) {
         console.log('Verify button found. Adding listener.');
 
+        // Gender Selection Logic
+        const genderOptions = document.querySelectorAll('.gender-option');
+        const genderInput = document.getElementById('user-gender');
+
+        genderOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                genderOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                genderInput.value = option.dataset.value;
+            });
+        });
+
         const handleVerification = () => {
             const ageValue = userAgeInput.value.trim();
             const age = parseInt(ageValue);
-            console.log('Entered Age:', ageValue, 'Parsed Age:', age);
+            const gender = genderInput.value;
+
+            console.log('Entered Age:', ageValue, 'Gender:', gender);
 
             // Validate input
             if (!ageValue || isNaN(age) || age < 1 || age > 150) {
-                console.warn('Invalid age entered.');
-                showToast('Please enter a valid age between 1 and 150', 'error');
-                userAgeInput.value = '';
+                showToast('Please enter a valid age', 'error');
                 userAgeInput.focus();
                 return;
             }
 
+            if (!gender) {
+                showToast('Please select your gender', 'error');
+                return;
+            }
+
+            // Logic: Age >= 18 AND (Male OR Trans)
             if (age >= 18) {
-                console.log('Verification successful! Age >= 18');
-                // Set in both storage mechanisms for security
-                localStorage.setItem('ageVerified', 'true');
-                sessionStorage.setItem('ageVerified', 'true');
-                localStorage.setItem('ageVerifiedTimestamp', Date.now().toString());
+                if (gender === 'male' || gender === 'trans') {
+                    console.log('Verification successful!');
+                    localStorage.setItem('ageVerified', 'true');
+                    sessionStorage.setItem('ageVerified', 'true');
 
-                // Show website content
-                const mainContent = document.getElementById('main-content');
-                const navbar = document.querySelector('.navbar');
-                const footer = document.querySelector('footer');
-                const bottomNav = document.querySelector('.bottom-nav');
+                    // Show content
+                    const mainContent = document.getElementById('main-content');
+                    const navbar = document.querySelector('.navbar');
+                    const footer = document.querySelector('footer');
+                    const bottomNav = document.querySelector('.bottom-nav');
 
-                if (mainContent) mainContent.style.display = 'block';
-                if (navbar) navbar.style.display = 'flex';
-                if (footer) footer.style.display = 'block';
-                if (bottomNav) bottomNav.style.display = 'flex';
+                    if (mainContent) mainContent.style.display = 'block';
+                    if (navbar) navbar.style.display = 'flex';
+                    if (footer) footer.style.display = 'block';
+                    if (bottomNav) bottomNav.style.display = 'flex';
 
-                // Hide age gate
-                if (ageGate) ageGate.classList.remove('active');
-                document.body.classList.remove('content-hidden');
-                document.body.style.overflow = '';
-                showToast('Welcome! Age verified successfully.', 'success');
+                    if (ageGate) ageGate.classList.remove('active');
+                    document.body.classList.remove('content-hidden');
+                    document.body.style.overflow = '';
+                    showToast('Welcome! Verified successfully.', 'success');
+                } else {
+                    // Block if Female
+                    console.warn('Verification failed. Gender restricted.');
+                    showToast('Access Denied: Content restricted.', 'error');
+
+                    // Show blocking message
+                    if (ageGate) {
+                        ageGate.innerHTML = `
+                            <div class="modal-content age-gate-content" style="animation: shake 0.5s; max-width: 450px; padding: 40px; text-align: center;">
+                                <div style="font-size: 4rem; color: #e74c3c; margin-bottom: 1rem;">🚫</div>
+                                <h2 style="color: #e74c3c; margin-bottom: 1rem;">Access Denied</h2>
+                                <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+                                    You cannot open this site because it contains nudity and explicit material.
+                                </p>
+                                <button class="btn btn-secondary" onclick="window.location.href='https://www.google.com'" style="width: 100%; padding: 12px; border-radius: 12px; background: #333; color: white; border: none; cursor: pointer;">
+                                    Leave Site
+                                </button>
+                            </div>
+                        `;
+                    }
+                }
             } else {
-                // STRICT ACTION: Immediately block and redirect if under 18
-                console.warn('Verification failed. Age < 18. Blocking access immediately.');
+                // Block if under 18
+                console.warn('Verification failed. Age < 18.');
+                showToast('Access Denied: You must be 18+.', 'error');
 
-                // Show error message
-                showToast('Access Denied: You must be 18 or older to enter this website.', 'error');
-
-                // Hide age gate and show blocking message
                 if (ageGate) {
                     ageGate.innerHTML = `
-                        <div class="modal-content age-gate-content" style="animation: shake 0.5s;">
+                        <div class="modal-content age-gate-content" style="animation: shake 0.5s; max-width: 450px; padding: 40px; text-align: center;">
                             <div style="font-size: 4rem; color: #e74c3c; margin-bottom: 1rem;">🚫</div>
                             <h2 style="color: #e74c3c; margin-bottom: 1rem;">Access Denied</h2>
                             <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
-                                You must be at least 18 years old to access this website. 
-                                This site contains adult content that is not suitable for minors.
+                                You cannot open this site because it contains nudity and explicit material.
                             </p>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">
-                                You are being redirected to a safe website.
-                            </p>
-                            <button class="btn btn-secondary" onclick="window.location.href='https://www.google.com'" style="width: 100%;">
+                            <button class="btn btn-secondary" onclick="window.location.href='https://www.google.com'" style="width: 100%; padding: 12px; border-radius: 12px; background: #333; color: white; border: none; cursor: pointer;">
                                 Leave Site
                             </button>
                         </div>
                     `;
                 }
-
-                // Immediately redirect (no delay for strict enforcement)
                 setTimeout(() => {
                     window.location.replace('https://www.google.com');
-                }, 1500);
+                }, 2000);
             }
         };
 
@@ -130,14 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (e.key === 'Enter') {
                     handleVerification();
                 }
-            });
-
-            // Focus input for convenience
-            setTimeout(() => userAgeInput.focus(), 500);
-
-            // Prevent pasting to avoid bypass attempts
-            userAgeInput.addEventListener('paste', (e) => {
-                e.preventDefault();
             });
         }
     } else {

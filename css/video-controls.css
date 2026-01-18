@@ -1,0 +1,205 @@
+/* ===== VIDEO PLAYER CONTROLS - MEDIUM SIZE & VISIBLE ===== */
+
+/* Main Controls Container */
+.controls-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+}
+
+.controls-left,
+.controls-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* MEDIUM SIZED CONTROL BUTTONS */
+.control-btn {
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    cursor: pointer;
+    padding: 10px 14px !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.control-btn:hover {
+    color: var(--primary) !important;
+    transform: scale(1.1) !important;
+    background: rgba(255, 0, 85, 0.2) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.3) !important;
+}
+
+.control-btn:active {
+    transform: scale(1.05) !important;
+}
+
+/* Speed Button - MAKE IT STAND OUT */
+#playback-speed-btn {
+    min-width: 55px !important;
+    font-size: 1rem !important;
+    background: rgba(255, 0, 85, 0.2) !important;
+    border: 2px solid rgba(255, 0, 85, 0.5) !important;
+}
+
+#playback-speed-btn:hover {
+    background: rgba(255, 0, 85, 0.3) !important;
+    border-color: var(--primary) !important;
+}
+
+#speed-text {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+}
+
+/* Settings Menu - ENSURE VISIBILITY */
+.settings-menu {
+    position: absolute !important;
+    bottom: 70px !important;
+    right: 80px !important;
+    background: rgba(15, 15, 15, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 2px solid var(--primary) !important;
+    border-radius: 14px !important;
+    padding: 12px !important;
+    display: none !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    min-width: 120px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 8px 30px rgba(255, 0, 85, 0.5) !important;
+}
+
+.settings-menu.active {
+    display: flex !important;
+    animation: slideUpFade 0.3s ease !important;
+}
+
+/* Speed Options - MEDIUM & VISIBLE */
+.settings-option {
+    padding: 10px 14px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid transparent !important;
+    text-align: center !important;
+}
+
+.settings-option:hover {
+    background: rgba(255, 0, 85, 0.25) !important;
+    color: #ffffff !important;
+    border-color: var(--primary) !important;
+    transform: translateX(4px) !important;
+}
+
+.settings-option.active {
+    background: var(--primary) !important;
+    color: white !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 12px rgba(255, 0, 85, 0.5) !important;
+}
+
+/* Time Display */
+.time-display {
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    padding: 6px 10px !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 6px !important;
+}
+
+/* Volume Container */
+.volume-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+#volume-slider {
+    width: 70px !important;
+    height: 4px !important;
+    cursor: pointer !important;
+}
+
+/* Progress Bar */
+.video-progress-container {
+    height: 6px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 3px !important;
+    margin-bottom: 15px !important;
+    cursor: pointer !important;
+    position: relative !important;
+}
+
+.video-progress-played {
+    height: 100% !important;
+    background: var(--primary) !important;
+    border-radius: 3px !important;
+    position: relative !important;
+}
+
+.video-progress-played::after {
+    content: '' !important;
+    position: absolute !important;
+    right: -4px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: #ffffff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 8px rgba(255, 0, 85, 0.6) !important;
+}
+
+/* Animation */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive - Slightly Larger on Mobile */
+@media (max-width: 768px) {
+    .control-btn {
+        font-size: 1.2rem !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        padding: 11px 15px !important;
+    }
+
+    .settings-option {
+        font-size: 1.1rem !important;
+        padding: 11px 16px !important;
+    }
+
+    .settings-menu {
+        min-width: 130px !important;
+        bottom: 75px !important;
+        right: 20px !important;
+    }
+}

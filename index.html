@@ -8,395 +8,392 @@
     <meta name="description"
         content="The premium destination for exclusive adult content. Experience high-quality streaming from top creators.">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fixes.css">
+    <link rel="stylesheet" href="css/video-controls.css">
+    <link rel="stylesheet" href="css/age-gate.css">
+    <link rel="stylesheet" href="css/progress-bar-fix.css">
+    <link rel="stylesheet" href="css/speed-button-highlight.css">
+    <link rel="stylesheet" href="css/categories-modern.css">
+    <link rel="stylesheet" href="css/website-enhancements.css">
+    <link rel="stylesheet" href="css/modern-layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="content-hidden">
     <!-- Age Gate -->
-    <div id="age-gate" class="modal-overlay">
-        <div class="age-gate-content">
-            <div class="age-badge">18+</div>
-            <h1>Age Verification</h1>
-            <p>This website contains age-restricted materials. By entering, you affirm that you are at least 18 years of
-                age.</p>
-            <div class="age-input-group">
-                <input type="number" id="user-age" placeholder="Age" min="1" max="120">
-                <button id="verify-btn" class="btn-primary">Enter Site</button>
+    <div id="age-gate" class="modal-overlay active">
+        <div class="age-gate-content modal-content" style="max-width: 450px; padding: 40px; text-align: center;">
+            <div class="age-badge"
+                style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-weight: 700;">
+                18+</div>
+            <h1 style="margin-bottom: 10px;">Restricted Access</h1>
+            <p style="color: var(--text-muted); margin-bottom: 30px; line-height: 1.5;">
+                <strong>WARNING:</strong> This website contains sexually explicit material, pornography, and nudity.
+                By entering, you acknowledge that you are accessing this content at your own risk.
+            </p>
+
+            <div class="gender-selection">
+                <div class="gender-option" data-value="male">
+                    <i class="fas fa-mars"></i>
+                    <span>Male</span>
+                </div>
+                <div class="gender-option" data-value="female">
+                    <i class="fas fa-venus"></i>
+                    <span>Female</span>
+                </div>
+                <div class="gender-option" data-value="trans">
+                    <i class="fas fa-transgender"></i>
+                    <span>Trans</span>
+                </div>
             </div>
-            <button id="leave-btn" class="btn-outline" style="margin-top: 15px; width: 100%;">Leave Site</button>
-            <p class="error-msg" id="age-error"></p>
+            <input type="hidden" id="user-gender">
+
+            <div class="age-input-group">
+                <input type="number" id="user-age" placeholder="Enter your age" min="1" max="120">
+            </div>
+
+            <button id="verify-btn" class="btn-primary full-width">Enter Website</button>
+            <button id="leave-btn" class="btn-outline full-width" style="margin-top: 10px;">I am under 18</button>
+            <p class="error-msg" id="age-error" style="color: #ff4444; margin-top: 15px; font-size: 0.9rem;"></p>
         </div>
     </div>
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Zaheer Unfiltered | Premium Exclusive Content</title>
-        <meta name="description"
-            content="The premium destination for exclusive adult content. Experience high-quality streaming from top creators.">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet">
-    </head>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" data-page="home">ZAHEER<span>UNFILTERED</span></a>
 
-    <body class="content-hidden">
-        <!-- Age Gate -->
-        <div id="age-gate" class="modal-overlay">
-            <div class="age-gate-content">
-                <div class="age-badge">18+</div>
-                <h1>Age Verification</h1>
-                <p>This website contains age-restricted materials. By entering, you affirm that you are at least 18
-                    years of
-                    age.</p>
-                <div class="age-input-group">
-                    <input type="number" id="user-age" placeholder="Age" min="1" max="120">
-                    <button id="verify-btn" class="btn-primary">Enter Site</button>
+            <div class="nav-links">
+                <a href="#" class="active" data-page="home">Home</a>
+                <a href="#" data-page="explore">Explore</a>
+                <a href="#" data-page="photos">Photos</a>
+                <a href="#" data-page="creators">Creators</a>
+                <a href="#" data-page="categories">Categories</a>
+                <a href="#" data-page="about">About Us</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search videos, creators...">
                 </div>
-                <button id="leave-btn" class="btn-outline" style="margin-top: 15px; width: 100%;">Leave Site</button>
-                <p class="error-msg" id="age-error"></p>
+                <a href="#" data-page="favorites" class="btn-icon"><i class="fas fa-heart"></i></a>
+                <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
+    </nav>
 
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="#" class="logo" data-page="home">ZAHEER<span>UNFILTERED</span></a>
+    <div id="main-content">
+        <!-- Home View -->
+        <main id="home-view" class="view active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="trending-badge"><i class="fas fa-fire"></i> Trending Now</div>
+                    <h1>Zaheer Jk Presents Unfiltered Content</h1>
+                    <p>Experience the most premium and unfiltered content from your favorite stars. High quality, no
+                        limits.</p>
+                    <div class="hero-btns">
+                        <button class="btn-primary btn-lg" data-page="explore">Start Watching</button>
+                        <button class="btn-glass btn-lg" data-page="photos">Browse Photos</button>
+                    </div>
+                </div>
+            </section>
 
-                <div class="nav-links">
-                    <a href="#" class="active" data-page="home">Home</a>
-                    <a href="#" data-page="explore">Explore</a>
-                    <a href="#" data-page="photos">Photos</a>
-                    <a href="#" data-page="creators">Creators</a>
-                    <a href="#" data-page="categories">Categories</a>
+            <!-- Trending Section -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>Trending Now</h2>
+                    <a href="#" class="see-all" data-page="explore">See All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="video-grid" id="trending-container">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+
+            <!-- New Releases -->
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>New Releases</h2>
+                    <a href="#" class="see-all" data-page="explore">See All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="video-grid" id="new-releases-container">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Explore View -->
+        <main id="explore-view" class="view">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>Explore Content</h2>
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="trending">Trending</button>
+                        <button class="filter-btn" data-filter="new">New</button>
+                    </div>
+                </div>
+                <div class="video-grid" id="explore-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Photos View -->
+        <main id="photos-view" class="view">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>Exclusive Photos</h2>
+                </div>
+                <div class="photo-grid" id="photos-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+        </main>
+
+
+        <!-- Creators View -->
+        <main id="creators-view" class="view">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>Top Creators</h2>
+                </div>
+                <div class="creator-grid" id="creators-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Categories View -->
+        <main id="categories-view" class="view">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>All Categories</h2>
+                </div>
+                <div class="category-grid" id="all-categories-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Favorites View -->
+        <main id="favorites-view" class="view">
+            <section class="content-section">
+                <div class="section-header">
+                    <h2>My Favorites</h2>
+                </div>
+                <div class="video-grid" id="favorites-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Creator Profile View -->
+        <main id="creator-view" class="view">
+            <section class="creator-profile">
+                <div class="creator-cover"></div>
+                <div class="creator-info-header">
+                    <img id="profile-avatar" src="" alt="" class="creator-avatar-lg">
+                    <div class="creator-details">
+                        <h1 id="profile-name">Creator Name</h1>
+                        <p id="profile-username">@username</p>
+                        <div class="creator-stats">
+                            <!-- Dynamic Stats -->
+                        </div>
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-user-plus"></i> Subscribe</button>
+                </div>
+                <div class="content-section">
+                    <h3>Videos</h3>
+                    <div class="video-grid" id="creator-videos-grid">
+                        <!-- Dynamic Content -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- About Us View -->
+        <main id="about-view" class="view">
+            <section class="content-section about-section">
+                <div class="about-container">
+                    <div class="about-header">
+                        <h1>About Zaheer Unfiltered</h1>
+                        <p class="subtitle">Premium Content. Unfiltered Experience.</p>
+                    </div>
+
+                    <div class="about-grid">
+                        <div class="about-card-premium">
+                            <div class="about-icon"><i class="fas fa-user-tie"></i></div>
+                            <h3>The Founder</h3>
+                            <p><strong>Zaheer JK</strong> is the visionary Founder and CEO behind Zaheer Unfiltered.
+                                With a passion for high-quality, exclusive digital media, Zaheer has built this
+                                platform
+                                to bridge the gap between top-tier creators and their most dedicated fans.</p>
+                        </div>
+
+                        <div class="about-card-premium">
+                            <div class="about-icon"><i class="fas fa-building"></i></div>
+                            <h3>Tensor Titan Labs</h3>
+                            <p>Zaheer Unfiltered is proudly owned and operated by <strong>Tensor Titan Lab</strong>.
+                                Founded by <strong>Zaheer JK</strong>, Tensor Titan Lab is a cutting-edge technology
+                                and
+                                media conglomerate dedicated to pushing the boundaries of digital entertainment and
+                                streaming technology.</p>
+                        </div>
+                    </div>
+
+                    <div class="about-mission">
+                        <h2>Our Mission</h2>
+                        <p>Our mission is to provide a safe, premium, and high-performance environment for creators
+                            to
+                            share their most exclusive work. We believe in transparency, quality, and the power of
+                            unfiltered expression.</p>
+                    </div>
+
+                    <div class="about-license">
+                        <h2>Website License</h2>
+                        <div class="license-viewer">
+                            <iframe src="https://drive.google.com/file/d/1H8s0P68rqG2LPPJRe73ARXF9MBo77oBa/preview"
+                                width="100%" height="600px" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <a href="#" class="logo">ZAHEER<span>UNFILTERED</span></a>
+                <p>The premium destination for exclusive adult content. Experience the best in high-quality
+                    streaming.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Company</h4>
                     <a href="#" data-page="about">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
                 </div>
-
-                <div class="nav-actions">
-                    <div class="search-bar">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search videos, creators...">
-                    </div>
-                    <a href="#" data-page="favorites" class="btn-icon"><i class="fas fa-heart"></i></a>
-                    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-                </div>
-            </div>
-        </nav>
-
-        <div id="main-content">
-            <!-- Home View -->
-            <main id="home-view" class="view active">
-                <!-- Hero Section -->
-                <section class="hero">
-                    <div class="hero-overlay"></div>
-                    <div class="hero-content">
-                        <div class="trending-badge"><i class="fas fa-fire"></i> Trending Now</div>
-                        <h1>Zaheer Jk Presents Unfiltered Content</h1>
-                        <p>Experience the most premium and unfiltered content from your favorite stars. High quality, no
-                            limits.</p>
-                        <div class="hero-btns">
-                            <button class="btn-primary btn-lg" data-page="explore">Start Watching</button>
-                            <button class="btn-glass btn-lg" data-page="photos">Browse  Photos</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Trending Section -->
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>Trending Now</h2>
-                        <a href="#" class="see-all" data-page="explore">See All <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="video-grid" id="trending-container">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-
-                <!-- New Releases -->
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>New Releases</h2>
-                        <a href="#" class="see-all" data-page="explore">See All <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="video-grid" id="new-releases-container">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-            </main>
-
-            <!-- Explore View -->
-            <main id="explore-view" class="view">
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>Explore Content</h2>
-                        <div class="filter-tabs">
-                            <button class="filter-btn active" data-filter="all">All</button>
-                            <button class="filter-btn" data-filter="trending">Trending</button>
-                            <button class="filter-btn" data-filter="new">New</button>
-                        </div>
-                    </div>
-                    <div class="video-grid" id="explore-grid">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-            </main>
-
-            <!-- Photos View -->
-            <main id="photos-view" class="view">
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>Exclusive Photos</h2>
-                    </div>
-                    <div class="photo-grid" id="photos-grid">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-            </main>
-
-
-            <!-- Creators View -->
-            <main id="creators-view" class="view">
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>Top Creators</h2>
-                    </div>
-                    <div class="creator-grid" id="creators-grid">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-            </main>
-
-            <!-- Categories View -->
-            <main id="categories-view" class="view">
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>All Categories</h2>
-                    </div>
-                    <div class="category-grid" id="all-categories-grid">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-            </main>
-
-            <!-- Favorites View -->
-            <main id="favorites-view" class="view">
-                <section class="content-section">
-                    <div class="section-header">
-                        <h2>My Favorites</h2>
-                    </div>
-                    <div class="video-grid" id="favorites-grid">
-                        <!-- Dynamic Content -->
-                    </div>
-                </section>
-            </main>
-
-            <!-- Creator Profile View -->
-            <main id="creator-view" class="view">
-                <section class="creator-profile">
-                    <div class="creator-cover"></div>
-                    <div class="creator-info-header">
-                        <img id="profile-avatar" src="" alt="" class="creator-avatar-lg">
-                        <div class="creator-details">
-                            <h1 id="profile-name">Creator Name</h1>
-                            <p id="profile-username">@username</p>
-                            <div class="creator-stats">
-                                <!-- Dynamic Stats -->
-                            </div>
-                        </div>
-                        <button class="btn-primary"><i class="fas fa-user-plus"></i> Subscribe</button>
-                    </div>
-                    <div class="content-section">
-                        <h3>Videos</h3>
-                        <div class="video-grid" id="creator-videos-grid">
-                            <!-- Dynamic Content -->
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <!-- About Us View -->
-            <main id="about-view" class="view">
-                <section class="content-section about-section">
-                    <div class="about-container">
-                        <div class="about-header">
-                            <h1>About Zaheer Unfiltered</h1>
-                            <p class="subtitle">Premium Content. Unfiltered Experience.</p>
-                        </div>
-
-                        <div class="about-grid">
-                            <div class="about-card-premium">
-                                <div class="about-icon"><i class="fas fa-user-tie"></i></div>
-                                <h3>The Founder</h3>
-                                <p><strong>Zaheer JK</strong> is the visionary Founder and CEO behind Zaheer Unfiltered.
-                                    With a passion for high-quality, exclusive digital media, Zaheer has built this
-                                    platform
-                                    to bridge the gap between top-tier creators and their most dedicated fans.</p>
-                            </div>
-
-                            <div class="about-card-premium">
-                                <div class="about-icon"><i class="fas fa-building"></i></div>
-                                <h3>Tensor Titan Labs</h3>
-                                <p>Zaheer Unfiltered is proudly owned and operated by <strong>Tensor Titan Lab</strong>.
-                                    Founded by <strong>Zaheer JK</strong>, Tensor Titan Lab is a cutting-edge technology
-                                    and
-                                    media conglomerate dedicated to pushing the boundaries of digital entertainment and
-                                    streaming technology.</p>
-                            </div>
-                        </div>
-
-                        <div class="about-mission">
-                            <h2>Our Mission</h2>
-                            <p>Our mission is to provide a safe, premium, and high-performance environment for creators
-                                to
-                                share their most exclusive work. We believe in transparency, quality, and the power of
-                                unfiltered expression.</p>
-                        </div>
-
-                        <div class="about-license">
-                            <h2>Website License</h2>
-                            <div class="license-viewer">
-                                <iframe src="https://drive.google.com/file/d/1H8s0P68rqG2LPPJRe73ARXF9MBo77oBa/preview"
-                                    width="100%" height="600px" allow="autoplay"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-info">
-                    <a href="#" class="logo">ZAHEER<span>UNFILTERED</span></a>
-                    <p>The premium destination for exclusive adult content. Experience the best in high-quality
-                        streaming.
-                    </p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Company</h4>
-                        <a href="#" data-page="about">About Us</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Contact</a>
-                    </div>
-                    <div class="link-group">
-                        <h4>Legal</h4>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">2257 Exemption</a>
-                        <a href="#">DMCA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Zaheer Unfiltered. All rights reserved. 18+ Only. Owned by Tensor Titan Lab.</p>
-            </div>
-        </footer>
-
-        <!-- Video Player Modal -->
-        <div id="video-modal" class="modal-overlay">
-            <div class="modal-content video-player-content">
-                <div class="video-player-wrapper">
-                    <video id="main-video-player" poster=""></video>
-
-                    <!-- Custom Controls -->
-                    <div class="video-controls-overlay hidden">
-                        <div class="video-progress-container">
-                            <div class="video-progress-bar">
-                                <div class="video-progress-loaded"></div>
-                                <div class="video-progress-played"></div>
-                                <div class="video-progress-handle"></div>
-                            </div>
-                        </div>
-
-                        <div class="controls-main">
-                            <div class="controls-left">
-                                <button id="play-pause-btn" class="control-btn"><i class="fas fa-play"></i></button>
-                                <div class="volume-container">
-                                    <button id="volume-btn" class="control-btn"><i
-                                            class="fas fa-volume-up"></i></button>
-                                    <input type="range" id="volume-slider" min="0" max="100" value="100">
-                                </div>
-                                <div class="time-display">
-                                    <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
-                                </div>
-                            </div>
-
-                            <div class="controls-right">
-                                <button id="playback-speed-btn" class="control-btn"><span
-                                        id="speed-text">1x</span></button>
-                                <button id="quality-btn" class="control-btn">HD</button>
-                                <button id="pip-btn" class="control-btn"><i
-                                        class="fas fa-external-link-alt"></i></button>
-                                <button id="fullscreen-btn" class="control-btn"><i class="fas fa-expand"></i></button>
-                                <button id="close-video-btn" class="control-btn close-modal"><i
-                                        class="fas fa-times"></i></button>
-                            </div>
-                        </div>
-
-                        <div id="settings-menu" class="settings-menu">
-                            <div id="speed-options">
-                                <div class="settings-option" data-speed="0.25">0.25x</div>
-                                <div class="settings-option" data-speed="0.5">0.5x</div>
-                                <div class="settings-option" data-speed="0.75">0.75x</div>
-                                <div class="settings-option active" data-speed="1">Normal</div>
-                                <div class="settings-option" data-speed="1.25">1.25x</div>
-                                <div class="settings-option" data-speed="1.5">1.5x</div>
-                                <div class="settings-option" data-speed="1.75">1.75x</div>
-                                <div class="settings-option" data-speed="2">2x</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="video-info">
-                    <div class="video-info-top">
-                        <h2 id="modal-title">Video Title</h2>
-                        <button id="modal-fav" class="btn-icon"><i class="fas fa-heart"></i></button>
-                    </div>
-                    <p id="modal-desc">Description of the video goes here...</p>
+                <div class="link-group">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">2257 Exemption</a>
+                    <a href="#">DMCA</a>
                 </div>
             </div>
         </div>
-
-        <!-- Toast Container -->
-        <div id="toast-container"></div>
-
-        <!-- Mobile Bottom Nav -->
-        <div class="bottom-nav">
-            <a href="#" class="bottom-nav-item active" data-page="home">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="#" class="bottom-nav-item" data-page="explore">
-                <i class="fas fa-compass"></i>
-                <span>Explore</span>
-            </a>
-            <a href="#" class="bottom-nav-item" data-page="photos">
-                <i class="fas fa-image"></i>
-                <span>Photos</span>
-            </a>
-            <a href="#" class="bottom-nav-item" data-page="creators">
-                <i class="fas fa-users"></i>
-                <span>Creators</span>
-            </a>
-            <a href="#" class="bottom-nav-item" data-page="favorites">
-                <i class="fas fa-heart"></i>
-                <span>Favs</span>
-            </a>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Zaheer Unfiltered. All rights reserved. 18+ Only. Owned by Tensor Titan Lab.</p>
         </div>
+    </footer>
 
-        <script src="js/data.js"></script>
-        <script src="js/app.js"></script>
-    </body>
+    <!-- Video Player Modal -->
+    <div id="video-modal" class="modal-overlay">
+        <div class="modal-content video-player-content">
+            <div class="video-player-wrapper">
+                <video id="main-video-player" poster=""></video>
 
-    </html>
+                <!-- Custom Controls -->
+                <div class="video-controls-overlay hidden">
+                    <div class="video-progress-container">
+                        <div class="video-progress-bar">
+                            <div class="video-progress-loaded"></div>
+                            <div class="video-progress-played"></div>
+                            <div class="video-progress-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="controls-main">
+                        <div class="controls-left">
+                            <button id="play-pause-btn" class="control-btn"><i class="fas fa-play"></i></button>
+                            <div class="volume-container">
+                                <button id="volume-btn" class="control-btn"><i class="fas fa-volume-up"></i></button>
+                                <input type="range" id="volume-slider" min="0" max="100" value="100">
+                            </div>
+                            <div class="time-display">
+                                <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="controls-right">
+                            <button id="playback-speed-btn" class="control-btn"><span id="speed-text">1x</span></button>
+                            <button id="quality-btn" class="control-btn">Speed</button>
+                            <button id="pip-btn" class="control-btn"><i class="fas fa-external-link-alt"></i></button>
+                            <button id="fullscreen-btn" class="control-btn"><i class="fas fa-expand"></i></button>
+                            <button id="close-video-btn" class="control-btn close-modal"><i
+                                    class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Speed Settings Menu -->
+                <div id="settings-menu" class="settings-menu">
+                    <div id="speed-options">
+                        <div class="settings-option" data-speed="0.25">0.25x</div>
+                        <div class="settings-option" data-speed="0.5">0.5x</div>
+                        <div class="settings-option" data-speed="0.75">0.75x</div>
+                        <div class="settings-option active" data-speed="1">1x</div>
+                        <div class="settings-option" data-speed="1.25">1.25x</div>
+                        <div class="settings-option" data-speed="1.5">1.5x</div>
+                        <div class="settings-option" data-speed="1.75">1.75x</div>
+                        <div class="settings-option" data-speed="2">2x</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-info">
+                <div class="video-info-top">
+                    <h2 id="modal-title">Video Title</h2>
+                    <button id="modal-fav" class="btn-icon"><i class="fas fa-heart"></i></button>
+                </div>
+                <p id="modal-desc">Description of the video goes here...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="bottom-nav">
+        <a href="#" class="bottom-nav-item active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="bottom-nav-item" data-page="explore">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+        </a>
+        <a href="#" class="bottom-nav-item" data-page="photos">
+            <i class="fas fa-image"></i>
+            <span>Photos</span>
+        </a>
+        <a href="#" class="bottom-nav-item" data-page="creators">
+            <i class="fas fa-users"></i>
+            <span>Creators</span>
+        </a>
+        <a href="#" class="bottom-nav-item" data-page="favorites">
+            <i class="fas fa-heart"></i>
+            <span>Favs</span>
+        </a>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/speed-menu.js"></script>
+</body>
+
+</html>

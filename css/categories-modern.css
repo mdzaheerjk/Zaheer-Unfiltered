@@ -1,0 +1,305 @@
+/* ===== MODERN CATEGORIES SECTION - PREMIUM UI/UX ===== */
+
+/* Categories Container */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Category Card - Modern Design */
+.category-card {
+    height: 200px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 0, 85, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+/* Category Image */
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.85);
+}
+
+/* Category Overlay - Enhanced Gradient */
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.3) 40%,
+            rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+/* Category Name - Typography */
+.category-name {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.category-name::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), #ff3377);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+/* Video Count Badge */
+.category-card::after {
+    content: attr(data-count);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 0, 85, 0.9);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+}
+
+/* Hover Effects */
+.category-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(255, 0, 85, 0.3);
+    border-color: var(--primary);
+}
+
+.category-card:hover::before {
+    opacity: 1;
+}
+
+.category-card:hover img {
+    transform: scale(1.15);
+    filter: brightness(1);
+}
+
+.category-card:hover .category-overlay {
+    background: linear-gradient(180deg,
+            rgba(255, 0, 85, 0.2) 0%,
+            rgba(0, 0, 0, 0.6) 60%,
+            rgba(0, 0, 0, 0.95) 100%);
+}
+
+.category-card:hover .category-name {
+    transform: translateY(-5px);
+    color: var(--primary);
+}
+
+.category-card:hover .category-name::after {
+    width: 100%;
+}
+
+.category-card:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section Header Enhancement */
+.section-header {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), #ff3377);
+    border-radius: 2px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* Active/Selected State */
+.category-card.active {
+    border-color: var(--primary);
+    box-shadow: 0 8px 30px rgba(255, 0, 85, 0.5);
+}
+
+.category-card.active .category-name {
+    color: var(--primary);
+}
+
+/* Skeleton Loading Animation */
+.category-card.loading {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+    .category-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .category-card {
+        height: 160px;
+    }
+
+    .category-name {
+        font-size: 1.1rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .category-card {
+        height: 180px;
+    }
+}
+
+/* Alternative Card Style - Compact */
+.category-card.compact {
+    height: 140px;
+    border-radius: 16px;
+}
+
+.category-card.compact .category-name {
+    font-size: 1.1rem;
+}
+
+/* Alternative Style - Minimal */
+.category-card.minimal {
+    background: var(--bg-card);
+}
+
+.category-card.minimal img {
+    opacity: 0.3;
+}
+
+.category-card.minimal:hover img {
+    opacity: 1;
+}
+
+/* Grid Layout Variants */
+.category-grid.large-cards {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.category-grid.large-cards .category-card {
+    height: 250px;
+}
+
+.category-grid.small-cards {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.category-grid.small-cards .category-card {
+    height: 120px;
+}
+
+/* Featured Category */
+.category-card.featured {
+    grid-column: span 2;
+    height: 280px;
+}
+
+.category-card.featured .category-name {
+    font-size: 1.8rem;
+}
+
+@media (max-width: 768px) {
+    .category-card.featured {
+        grid-column: span 1;
+        height: 200px;
+    }
+
+    .category-card.featured .category-name {
+        font-size: 1.3rem;
+    }
+}

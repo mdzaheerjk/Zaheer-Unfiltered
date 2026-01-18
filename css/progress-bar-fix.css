@@ -1,0 +1,176 @@
+/* ===== ENHANCED PROGRESS BAR & SEEKING ===== */
+
+/* Progress Container - CLICKABLE */
+.video-progress-container {
+    height: 10px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 5px !important;
+    margin-bottom: 20px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    width: 100% !important;
+    transition: height 0.2s ease !important;
+}
+
+.video-progress-container:hover {
+    height: 14px !important;
+}
+
+/* Progress Bar Wrapper */
+.video-progress-bar {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 5px !important;
+    overflow: visible !important;
+}
+
+/* Loaded Progress (buffered) */
+.video-progress-loaded {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 5px !important;
+    width: 0% !important;
+    transition: width 0.3s ease !important;
+}
+
+/* Played Progress */
+.video-progress-played {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, var(--primary) 0%, #ff3377 100%) !important;
+    border-radius: 5px !important;
+    width: 0% !important;
+    transition: width 0.1s linear !important;
+    z-index: 2 !important;
+}
+
+/* Progress Handle (Draggable Thumb) */
+.video-progress-handle {
+    position: absolute !important;
+    right: -8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 16px !important;
+    height: 16px !important;
+    background: #ffffff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.8), 0 0 20px rgba(255, 0, 85, 0.4) !important;
+    cursor: grab !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease !important;
+    z-index: 3 !important;
+}
+
+.video-progress-container:hover .video-progress-handle {
+    opacity: 1 !important;
+}
+
+.video-progress-handle:hover {
+    transform: translateY(-50%) scale(1.3) !important;
+}
+
+.video-progress-handle:active {
+    cursor: grabbing !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Seeking Tooltip */
+.video-progress-container::after {
+    content: attr(data-seek-time);
+    position: absolute;
+    bottom: 20px;
+    left: var(--seek-position, 0%);
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.video-progress-container:hover::after {
+    opacity: 1;
+}
+
+/* Mobile Enhancements */
+@media (max-width: 768px) {
+    .video-progress-container {
+        height: 12px !important;
+    }
+
+    .video-progress-container:hover {
+        height: 16px !important;
+    }
+
+    .video-progress-handle {
+        width: 20px !important;
+        height: 20px !important;
+        opacity: 1 !important;
+        /* Always visible on mobile */
+    }
+}
+
+/* ===== SPEED BUTTON VISIBILITY FIX ===== */
+
+#playback-speed-btn {
+    background: rgba(255, 0, 85, 0.15) !important;
+    border-color: rgba(255, 0, 85, 0.4) !important;
+}
+
+#playback-speed-btn:hover {
+    background: rgba(255, 0, 85, 0.3) !important;
+    border-color: var(--primary) !important;
+}
+
+#speed-text {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 1.4rem !important;
+}
+
+/* Ensure Settings Menu Shows */
+.settings-menu {
+    display: none !important;
+}
+
+.settings-menu.active {
+    display: flex !important;
+}
+
+/* Make sure all control buttons are visible */
+.control-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Time Display Visibility */
+.time-display {
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    padding: 8px 14px !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+.time-display span {
+    color: #ffffff !important;
+}
+
+#current-time {
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+}

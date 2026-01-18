@@ -1,0 +1,283 @@
+/* ===== MODERN LAYOUT - PREMIUM NAVIGATION & FOOTER ===== */
+
+/* ========== PREMIUM NAVBAR ========== */
+.navbar {
+    background: rgba(8, 8, 8, 0.7) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.navbar.scrolled {
+    background: rgba(5, 5, 5, 0.9) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 0, 85, 0.15);
+}
+
+.nav-container {
+    padding: 0 50px !important;
+}
+
+/* Logo Enhancement */
+.logo {
+    font-size: 1.8rem !important;
+    letter-spacing: -0.5px !important;
+    position: relative;
+    z-index: 10;
+}
+
+.logo span {
+    background: linear-gradient(135deg, var(--primary), #ff3377);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+}
+
+/* Nav Links - Modern Pill Style */
+.nav-links {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 5px !important;
+}
+
+.nav-links a {
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-links a:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links a.active {
+    background: var(--primary);
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.3);
+}
+
+.nav-links a.active::after {
+    display: none !important;
+    /* Remove old underline */
+}
+
+/* Search Bar - Expanded */
+.search-bar {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 8px 15px !important;
+    transition: all 0.3s ease !important;
+    width: 250px;
+}
+
+.search-bar:focus-within {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.15) !important;
+    width: 300px;
+}
+
+.search-bar input {
+    font-size: 0.95rem !important;
+}
+
+.search-bar button {
+    color: var(--text-muted) !important;
+    transition: color 0.3s ease !important;
+}
+
+.search-bar:focus-within button {
+    color: var(--primary) !important;
+}
+
+/* ========== MODERN FOOTER ========== */
+footer {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #050505 100%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 80px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.5;
+}
+
+.footer-content {
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr !important;
+    gap: 60px !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 0 40px 60px !important;
+}
+
+/* Footer Brand */
+.footer-brand h2 {
+    font-size: 2rem !important;
+    margin-bottom: 20px !important;
+    background: linear-gradient(135deg, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-brand p {
+    color: var(--text-muted) !important;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+    max-width: 300px;
+}
+
+/* Footer Links */
+.footer-links h3 {
+    font-size: 1.2rem !important;
+    color: white !important;
+    margin-bottom: 25px !important;
+    font-weight: 700 !important;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-links h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.footer-links ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+}
+
+.footer-links a {
+    color: var(--text-muted) !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    color: var(--primary) !important;
+    transform: translateX(5px);
+}
+
+.footer-links a::before {
+    content: '›';
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Social Icons */
+.social-links {
+    display: flex !important;
+    gap: 15px !important;
+    margin-top: 30px !important;
+}
+
+.social-links a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    transform: translateY(-5px) rotate(10deg) !important;
+    box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
+    border-color: var(--primary);
+}
+
+.social-links a i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Copyright Bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding: 30px 40px !important;
+    text-align: center !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+
+.footer-bottom p {
+    color: var(--text-muted) !important;
+    font-size: 0.9rem !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none !important;
+        /* Hide on tablet/mobile, use mobile menu */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 40px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px !important;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+
+    .footer-brand {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-links h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
